@@ -31,7 +31,9 @@ func handle_input(delta: float) -> void:
 
 func handle_animations() -> void:
 	var playing = _animation_sprite.animation
-	if _animation_sprite.is_playing() == false: playing = ""
+	if _animation_sprite.is_playing() == false:
+		playing = ""
+		_animation_sprite.rotation = 0
 	if Input.is_action_pressed("move_right") and playing != "attack":
 		_animation_sprite.play("move")
 	if Input.is_action_pressed("move_left") and playing != "attack":
@@ -45,8 +47,14 @@ func handle_animations() -> void:
 
 	if Input.is_action_just_pressed("move_right"):
 		_animation_sprite.flip_h = true
+		$NormalCollisionPolygon2D.scale.x = -1
 	if Input.is_action_just_pressed("move_left"):
 		_animation_sprite.flip_h = false
+		$NormalCollisionPolygon2D.scale.x = 1
 
 	if Input.is_action_just_pressed("attack"):
+		var mouse_position = get_viewport().get_mouse_position()
+		var direction_vector = (mouse_position - position).normalized()
+		var angle_of_attack = direction_vector.angle() + (PI / 2)
+		_animation_sprite.rotation = angle_of_attack
 		_animation_sprite.play("attack")
