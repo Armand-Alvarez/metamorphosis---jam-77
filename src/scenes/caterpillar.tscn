@@ -8,7 +8,9 @@ atlas = ExtResource("1_hvfca")
 region = Rect2(0, 0, 32, 32)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(5.745, 5.745)
 script = ExtResource("1_t0v3e")
+speed = 275
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_2dbm7")
