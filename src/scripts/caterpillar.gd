@@ -1,8 +1,11 @@
 class_name Caterpillar
 extends CharacterBody2D
 
-
+@export_category("Movement")
 @export var speed: int = 300
+
+@export_category("Attributes")
+@export var health: int = 10
 
 @onready var _animation_sprite = $AnimatedSprite2D
 
@@ -58,3 +61,7 @@ func handle_animations() -> void:
 		var angle_of_attack = direction_vector.angle() + (PI / 2)
 		_animation_sprite.rotation = angle_of_attack
 		_animation_sprite.play("attack")
+
+
+func _change_health(amount: int) -> void:
+	health += amount

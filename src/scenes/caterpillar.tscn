@@ -138,5 +138,4 @@ polygon = PackedVector2Array(-13.1419, -5.22193, -12.0975, -6.09226, -11.7493, -
 
 [node name="AttackCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.98023e-08, 2.95909)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_wgqry")
