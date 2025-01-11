@@ -7,22 +7,9 @@ const mobs = {
 }
 
 
-func _ready() -> void:
-	set_up_signal_bus_connections()
-
 
 func _process(_delta: float) -> void:
 	handle_input()
-
-
-func set_up_signal_bus_connections() -> void:
-	SignalBus.health_changed.connect(_on_health_changed)
-
-
-func _on_health_changed(health: int) -> void:
-	for heart in $Hearts.get_children():
-		pass
-
 
 
 func handle_input() -> void:

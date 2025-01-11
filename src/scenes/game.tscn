@@ -8,6 +8,12 @@
 script = ExtResource("1_h2th1")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ftrwu")]
-position = Vector2(533, 376)
+position = Vector2(960, 540)
 
-[node name="Hearts" parent="." instance=ExtResource("3_pi3lh")]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="Hearts" parent="CharacterBody2D/Camera2D" instance=ExtResource("3_pi3lh")]
+position = Vector2(-156.136, -80.0696)
+scale = Vector2(0.484, 0.484)
