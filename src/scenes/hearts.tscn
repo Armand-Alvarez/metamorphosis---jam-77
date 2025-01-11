@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://fvg686gr87b4"]
+
+[ext_resource type="Texture2D" uid="uid://bi0deei1tvuk" path="res://assets/heart.png" id="1_4hkqa"]
+[ext_resource type="Script" path="res://src/scripts/hearts.gd" id="1_7i5wu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbqqi"]
+atlas = ExtResource("1_4hkqa")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ouqq"]
+atlas = ExtResource("1_4hkqa")
+region = Rect2(15, 0, 17, 32)
+
+[node name="Hearts" type="Node2D"]
+position = Vector2(13, 16)
+script = ExtResource("1_7i5wu")
+
+[node name="Heart1" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart1" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart2" type="Sprite2D" parent="."]
+position = Vector2(16, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(16, 0)
+texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart3" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 0)
+texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(48, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(48, 0)
+texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(64, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(64, 0)
+texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(80, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(80, 0)
+texture = SubResource("AtlasTexture_3ouqq")
