@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://q08ciy1xarpo"]
+[gd_scene load_steps=3 format=3 uid="uid://q08ciy1xarpo"]
 
 [ext_resource type="PackedScene" uid="uid://dmsmhcpgv3ks3" path="res://src/scenes/caterpillar.tscn" id="1_ftrwu"]
+[ext_resource type="Script" path="res://src/scripts/game.gd" id="1_h2th1"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_h2th1")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -12,8 +14,12 @@ offset_bottom = 40.0
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = 38.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 47.0
+value = 100.0
 fill_mode = 1
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ftrwu")]
+position = Vector2(533, 376)
