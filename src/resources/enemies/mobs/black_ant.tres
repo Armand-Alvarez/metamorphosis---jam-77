@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Mobs" load_steps=3 format=3 uid="uid://bkghggoilyn5p"]
+[gd_resource type="Resource" script_class="Mobs" load_steps=4 format=3 uid="uid://bkghggoilyn5p"]
 
 [ext_resource type="Script" path="res://src/scripts/enemies/mobs/mobs.gd" id="1_danai"]
+[ext_resource type="Texture2D" uid="uid://bfo5wd0swtkh7" path="res://assets/damage_indicator.png" id="1_wmarc"]
 [ext_resource type="Texture2D" uid="uid://cik6qdmj5myvy" path="res://assets/black_ant.png" id="2_vwwhn"]
 
 [resource]
 script = ExtResource("1_danai")
 mob_name = "Black Ant"
-mob_health = 10
-mob_attack_damage = 2
+mob_health = 4
+mob_attack_damage = 1
 mob_speed = 200
 texture = ExtResource("2_vwwhn")
+damage_indicator = ExtResource("1_wmarc")
