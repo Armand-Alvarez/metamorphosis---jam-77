@@ -26,12 +26,11 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Health
   - [x] Manual attack
     - [x] swipe tail in direction with short-range arc-shaped projectile
-## TODO SUNDAY!
 - [ ] Transformation
-  - [ ] Power-up meter
-  - [ ] Power pickups (leaves)
+  - [ ] Power-up meter !!!!!!!!
+  - [ ] Power pickups (leaves) !!!!!!!!
   - [ ] Transformation into a butterfly
-- [ ] Upgrades
+- [ ] Upgrades !!!!!!!!!
   - [ ] Increase attack rate
   - [ ] Increase health
   - [ ] Increase attack damage 
@@ -49,8 +48,9 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
 - [ ] Bosses
   - [ ] Spiders
   - [ ] Eagle
-- [ ] Main Menu
+- [ ] Main Menu !!!!!!
   - [ ] Start game
+  - [ ] Upgrades
   - [ ] Quit game
-- [ ] Background art
-- [ ] Map
+- [ ] Background art !!!!!!!! !
+  - [ ] Map
