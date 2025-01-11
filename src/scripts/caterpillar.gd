@@ -19,6 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	handle_input(delta)
 	handle_animations()
+	print($AIAttackPoints/Marker2D3.position)
 
 
 func handle_input(delta: float) -> void:
@@ -65,3 +66,11 @@ func handle_animations() -> void:
 
 func _change_health(amount: int) -> void:
 	health += amount
+	SignalBus.health_changed.emit(amount)
+
+
+func _on_marker_update_timer_timeout() -> void:
+	$AIAttackPoints/Marker2D.position = position + Vector2(-11.1, -4.8)
+	$AIAttackPoints/Marker2D2.position = position + Vector2(-7.3, 2.4)
+	$AIAttackPoints/Marker2D3.position = position + Vector2(3.8, 4.7)
+	$AIAttackPoints/Marker2D4.position = position + Vector2(10.7, -0.1)

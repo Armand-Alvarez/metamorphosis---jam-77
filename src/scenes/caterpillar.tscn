@@ -139,3 +139,23 @@ polygon = PackedVector2Array(-13.1419, -5.22193, -12.0975, -6.09226, -11.7493, -
 [node name="AttackCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.98023e-08, 2.95909)
 shape = SubResource("CircleShape2D_wgqry")
+
+[node name="AIAttackPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(-11.1401, -4.8738)
+
+[node name="Marker2D2" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(-7.3107, 2.4369)
+
+[node name="Marker2D3" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(3.82942, 4.69974)
+
+[node name="Marker2D4" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(10.792, -0.174064)
+
+[node name="MarkerUpdateTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="MarkerUpdateTimer" to="." method="_on_marker_update_timer_timeout"]
