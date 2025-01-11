@@ -3,7 +3,7 @@ extends Node
 
 
 # Character Signals
-signal health_changed(amount: int)
+signal health_changed(health: int)
 
 
 # Mob Signals
