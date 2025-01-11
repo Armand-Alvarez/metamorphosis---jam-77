@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmsmhcpgv3ks3"]
+[gd_scene load_steps=24 format=3 uid="uid://dmsmhcpgv3ks3"]
 
 [ext_resource type="Texture2D" uid="uid://hpnegx5iioky" path="res://assets/caterpillar.png" id="1_hvfca"]
 [ext_resource type="Script" path="res://src/scripts/caterpillar.gd" id="1_t0v3e"]
+[ext_resource type="Texture2D" uid="uid://b0pv33o6l5xi6" path="res://assets/attack_projectile.png" id="3_t30m0"]
+[ext_resource type="Texture2D" uid="uid://bfo5wd0swtkh7" path="res://assets/damage_indicator.png" id="4_qnjxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6hpf"]
 atlas = ExtResource("1_hvfca")
@@ -121,6 +123,35 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgqry"]
 radius = 3.83337
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmt4n"]
+atlas = ExtResource("3_t30m0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3tds"]
+atlas = ExtResource("3_t30m0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53455"]
+atlas = ExtResource("3_t30m0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmtqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmt4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3tds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53455")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(5.745, 5.745)
 script = ExtResource("1_t0v3e")
@@ -158,4 +189,38 @@ position = Vector2(10.792, -0.174064)
 wait_time = 0.1
 autostart = true
 
+[node name="AnimatedAttack" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_gmtqp")
+frame = 2
+frame_progress = 1.0
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+visible = false
+scale = Vector2(1, 1.42472)
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="AttackArea"]
+scale = Vector2(10.2384, 2.31429)
+polygon = PackedVector2Array(0, 0.844662, 0.340023, 0.844662, 1.10508, -4.32889, 0.425029, -7.65475, -0.595041, -7.65475, -1.02007, -4.32889, -0.323022, 0.791871)
+
+[node name="HitIndicator" type="Sprite2D" parent="."]
+position = Vector2(0.348129, -1.04439)
+rotation = 0.28076
+scale = Vector2(3.69162, 1.87471)
+texture = ExtResource("4_qnjxm")
+
+[node name="HitIndicatorTimer" type="Timer" parent="HitIndicator"]
+one_shot = true
+
 [connection signal="timeout" from="MarkerUpdateTimer" to="." method="_on_marker_update_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedAttack" to="." method="_on_animated_attack_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="HitIndicator/HitIndicatorTimer" to="." method="_on_hit_indicator_timer_timeout"]

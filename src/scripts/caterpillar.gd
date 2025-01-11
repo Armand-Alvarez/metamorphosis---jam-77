@@ -5,21 +5,30 @@ extends CharacterBody2D
 @export var speed: int = 300
 
 @export_category("Attributes")
-@export var health: int = 10
+@export var health: int = 5
+@export var damage: int = 2
+@export var attack_speed: float = 2.0
 
 @onready var _animation_sprite = $AnimatedSprite2D
+@onready var _attack_animation_sprite = $AnimatedAttack
+@onready var _attack_timer = $AttackTimer
+
+var can_attack: bool = true
+var can_take_damage: bool = true
 
 
 
 func _ready() -> void:
 	$NormalCollisionPolygon2D.disabled = false
 	$AttackCollisionShape2D.disabled = true
+	_attack_timer.wait_time = attack_speed
+	$HitIndicator.visible = false
+
 
 
 func _process(delta: float) -> void:
 	handle_input(delta)
 	handle_animations()
-	print($AIAttackPoints/Marker2D3.position)
 
 
 func handle_input(delta: float) -> void:
@@ -31,6 +40,9 @@ func handle_input(delta: float) -> void:
 		move_and_collide(Vector2.UP * speed * delta)
 	if Input.is_action_pressed("move_down"):
 		move_and_collide(Vector2.DOWN * speed * delta)
+	if Input.is_action_pressed("attack") and can_attack:
+		can_attack = false
+		attack()
 
 
 func handle_animations() -> void:
@@ -56,12 +68,30 @@ func handle_animations() -> void:
 		_animation_sprite.flip_h = false
 		$NormalCollisionPolygon2D.scale.x = 1
 
-	if Input.is_action_just_pressed("attack"):
-		var mouse_position = get_viewport().get_mouse_position()
-		var direction_vector = (mouse_position - position).normalized()
+
+
+func attack() -> void:
+	_attack_timer.start(attack_speed)
+	var mouse_position = get_viewport().get_mouse_position()
+	var direction_vector = (mouse_position - position).normalized()
+	$AttackArea.position = Vector2.ZERO + (direction_vector * 2)
+	$AttackArea.rotation = direction_vector.angle() + (PI / 2)
+	$AttackArea.monitoring = true
+	attack_animations(direction_vector)
+
+
+func attack_animations(direction_vector) -> void:
+	if _animation_sprite.animation != "attack":
 		var angle_of_attack = direction_vector.angle() + (PI / 2)
 		_animation_sprite.rotation = angle_of_attack
 		_animation_sprite.play("attack")
+
+		_attack_animation_sprite.position = Vector2.ZERO
+		_attack_animation_sprite.position += (direction_vector * 20)
+		_attack_animation_sprite.rotation = direction_vector.angle() + (PI/2)
+		_attack_animation_sprite.visible = true
+		_attack_animation_sprite.play()
+
 
 
 func _change_health(amount: int) -> void:
@@ -74,3 +104,30 @@ func _on_marker_update_timer_timeout() -> void:
 	$AIAttackPoints/Marker2D2.position = position + Vector2(-7.3, 2.4)
 	$AIAttackPoints/Marker2D3.position = position + Vector2(3.8, 4.7)
 	$AIAttackPoints/Marker2D4.position = position + Vector2(10.7, -0.1)
+
+
+func _on_animated_attack_animation_finished() -> void:
+	_attack_animation_sprite.visible = false
+	$AttackArea.monitoring = false
+
+
+func _on_attack_timer_timeout() -> void:
+	can_attack = true
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	print(body)
+	body.take_damage(damage)
+
+
+func take_damage(amount) -> void:
+	if can_take_damage:
+		health -= amount
+		$HitIndicator.visible = true
+		can_take_damage = false
+		$HitIndicator/HitIndicatorTimer.start()
+
+
+func _on_hit_indicator_timer_timeout() -> void:
+	$HitIndicator.visible = false
+	can_take_damage = true
