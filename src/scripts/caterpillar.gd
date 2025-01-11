@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var speed: int = 300
 
 @export_category("Attributes")
-@export var health: int = 5
+@export var health: int = 6
 @export var damage: int = 2
 @export var attack_speed: float = 2.0
 
@@ -15,7 +15,6 @@ extends CharacterBody2D
 
 var can_attack: bool = true
 var can_take_damage: bool = true
-
 
 
 func _ready() -> void:
@@ -96,7 +95,7 @@ func attack_animations(direction_vector) -> void:
 
 func _change_health(amount: int) -> void:
 	health += amount
-	SignalBus.health_changed.emit(amount)
+	SignalBus.health_changed.emit(health)
 
 
 func _on_marker_update_timer_timeout() -> void:
@@ -116,13 +115,13 @@ func _on_attack_timer_timeout() -> void:
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	print(body)
 	body.take_damage(damage)
 
 
 func take_damage(amount) -> void:
 	if can_take_damage:
-		health -= amount
+		_change_health(-amount)
+
 		$HitIndicator.visible = true
 		can_take_damage = false
 		$HitIndicator/HitIndicatorTimer.start()
