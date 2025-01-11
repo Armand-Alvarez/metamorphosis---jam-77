@@ -20,12 +20,13 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
 
 
 
-- [ ] Caterpillar
+- [x] Caterpillar
   - [x] Art & Animations 
   - [x] Movement 
-  - [ ] Health
-  - [ ] Manual attack
-    - [ ] swipe tail in direction with short-range arc-shaped projectile
+  - [x] Health
+  - [x] Manual attack
+    - [x] swipe tail in direction with short-range arc-shaped projectile
+## TODO SUNDAY!
 - [ ] Transformation
   - [ ] Power-up meter
   - [ ] Power pickups (leaves)
@@ -42,7 +43,7 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
     - [ ] 8 projectiles in octogon around butterfly
   - [ ] Quick movement 
 - [ ] Enemies
-  - [ ] Ants
+  - [x] Ants
   - [ ] Hornets
   - [ ] Birds 
 - [ ] Bosses
