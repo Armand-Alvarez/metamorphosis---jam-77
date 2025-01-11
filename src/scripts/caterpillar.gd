@@ -71,8 +71,9 @@ func handle_animations() -> void:
 
 func attack() -> void:
 	_attack_timer.start(attack_speed)
-	var mouse_position = get_viewport().get_mouse_position()
-	var direction_vector = (mouse_position - position).normalized()
+	#var mouse_position = get_viewport().get_mouse_position()
+	var mouse_position = get_local_mouse_position()
+	var direction_vector = (mouse_position - $Camera2D.position).normalized()
 	$AttackArea.position = Vector2.ZERO + (direction_vector * 2)
 	$AttackArea.rotation = direction_vector.angle() + (PI / 2)
 	$AttackArea.monitoring = true
