@@ -18,19 +18,26 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
 
 # Features
 
-- [ ] Transformation
-  - [ ] Power-up meter
-  - [ ] Transformation into a butterfly
+
+
 - [ ] Caterpillar
+  - [x] Art & Animations 
+  - [x] Movement 
   - [ ] Health
   - [ ] Manual attack
-    - [ ] swipe tail in direction with short-range arc-shaped projectile 
+    - [ ] swipe tail in direction with short-range arc-shaped projectile
+- [ ] Transformation
+  - [ ] Power-up meter
+  - [ ] Power pickups (leaves)
+  - [ ] Transformation into a butterfly
 - [ ] Upgrades
   - [ ] Increase attack rate
   - [ ] Increase health
   - [ ] Increase attack damage 
-- [ ] Butterfly 
-  - [ ] Super armor 
+- [ ] Butterfly
+  - [ ] Art & animations
+  - [ ] Movement
+  - [ ] Super armor
   - [ ] Auto-attack
     - [ ] 8 projectiles in octogon around butterfly
   - [ ] Quick movement 
@@ -44,4 +51,5 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
 - [ ] Main Menu
   - [ ] Start game
   - [ ] Quit game
-- [ ] 
+- [ ] Background art
+- [ ] Map
