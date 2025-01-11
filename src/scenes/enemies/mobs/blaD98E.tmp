@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://beskwfcid18i"]
+
+[ext_resource type="Resource" uid="uid://bkghggoilyn5p" path="res://src/resources/enemies/mobs/black_ant.tres" id="2_j5n2v"]
+[ext_resource type="Texture2D" uid="uid://cik6qdmj5myvy" path="res://assets/black_ant.png" id="3_rhlce"]
+
+[sub_resource type="GDScript" id="GDScript_pmsgc"]
+script/source = "class_name BlackAnt
+extends CharacterBody2D
+
+
+@export var resource: Resource
+
+
+func _ready() -> void:
+	if resource:
+		$Sprite2D.texture = resource.texture
+"
+
+[node name="BlackAnt" type="CharacterBody2D"]
+script = SubResource("GDScript_pmsgc")
+resource = ExtResource("2_j5n2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_rhlce")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -7, 1, -7, 3, -4, 13, 3, 13, 11, 0, 11, -10, 5, -10, -4)
