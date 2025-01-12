@@ -41,10 +41,6 @@ func _on_visibile_timer_timeout() -> void:
 	$DamageIndicator.visible = false
 
 
-func _on_attack_area_body_entered(body: Node2D) -> void:
-	body.take_damage(damage)
-
-
 func _death() -> void:
 	SignalBus.drop_leaves.emit(randi_range(min_leaves_dropped, max_leaves_dropped), position)
 	queue_free()
