@@ -226,6 +226,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
 polygon = PackedVector2Array(-11.6623, -4.52567, -10.792, -5.57006, -10.4439, -7.8329, -8.52916, -7.65883, -9.31245, -6.09226, -8.44212, -5.91819, -4.35161, 0.174064, 9.92167, 0.522193, 12.4456, -1.74064, 12.6197, 1.91471, 2.78503, 6.44038, -4.52567, 5.22193, -8.52916, 1.21845, -10.2698, -1.04439, -11.6623, -2.26284, -11.8364, -3.48129)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
 [connection signal="timeout" from="MarkerUpdateTimer" to="." method="_on_marker_update_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedAttack" to="." method="_on_animated_attack_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

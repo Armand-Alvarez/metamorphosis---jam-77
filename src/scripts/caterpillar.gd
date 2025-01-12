@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	handle_input(delta)
+	_handle_input(delta)
 	handle_animations()
 	var bodies_in_hitbox = $Hitbox.get_overlapping_bodies()
 	if not bodies_in_hitbox.is_empty():
@@ -45,7 +45,7 @@ func _on_leaf_picked_up() -> void:
 	pass
 
 
-func handle_input(delta: float) -> void:
+func _handle_input(delta: float) -> void:
 	if Input.is_action_pressed("move_right"):
 		move_and_collide(Vector2.RIGHT * speed * delta)
 	if Input.is_action_pressed("move_left"):
