@@ -10,5 +10,7 @@ mob_name = "Black Ant"
 mob_health = 4
 mob_attack_damage = 1
 mob_speed = 200
+min_leaves_dropped = 1
+max_leaves_dropped = 2
 texture = ExtResource("2_vwwhn")
 damage_indicator = ExtResource("1_wmarc")
