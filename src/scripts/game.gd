@@ -31,7 +31,8 @@ func handle_input() -> void:
 
 func _on_leaf_picked_up() -> void:
 	leaves += 1
-	$UI/CanvasLayer/HBoxContainer/LeavesCount.text = str(leaves)
+	$GUICanvasLayer/TextureProgressBar.value += 1
+	$GUICanvasLayer/PanelContainer/HBoxContainer/LeavesCount.text = str(leaves)
 
 
 func _on_leaves_dropped(amount: int, location: Vector2) -> void:
@@ -39,3 +40,7 @@ func _on_leaves_dropped(amount: int, location: Vector2) -> void:
 		var temp_leaf = leaf.instantiate()
 		temp_leaf.position = location
 		add_child(temp_leaf)
+
+
+func _on_ult_progress_timer_timeout() -> void:
+	$GUICanvasLayer/TextureProgressBar.value += 1

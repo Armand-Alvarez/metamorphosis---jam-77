@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://q08ciy1xarpo"]
+[gd_scene load_steps=6 format=3 uid="uid://q08ciy1xarpo"]
 
 [ext_resource type="PackedScene" uid="uid://dmsmhcpgv3ks3" path="res://src/scenes/caterpillar.tscn" id="1_ftrwu"]
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_h2th1"]
 [ext_resource type="PackedScene" uid="uid://fvg686gr87b4" path="res://src/scenes/hearts.tscn" id="3_pi3lh"]
+[ext_resource type="Texture2D" uid="uid://d3cv2yotjydjp" path="res://assets/butterfly_fillup_sprite.png" id="4_40cnk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwvwq"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_h2th1")
@@ -14,36 +17,49 @@ position = Vector2(960, 540)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="GUICanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+[node name="Hearts" parent="GUICanvasLayer" instance=ExtResource("3_pi3lh")]
+position = Vector2(62.9987, 80.0002)
+scale = Vector2(2.78058, 2.78058)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GUICanvasLayer"]
+offset_left = 896.0
+offset_right = 928.0
+offset_bottom = 32.0
+scale = Vector2(4, 4)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+max_value = 40.0
+fill_mode = 4
+texture_progress = ExtResource("4_40cnk")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUICanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -154.0
-offset_top = 29.0
-offset_right = -25.0
-offset_bottom = 52.0
+offset_left = -84.0
+offset_bottom = 40.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uwvwq")
 
-[node name="LeavesText" type="Label" parent="UI/CanvasLayer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUICanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="LeavesText" type="Label" parent="GUICanvasLayer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "Leaves:   "
 
-[node name="LeavesCount" type="Label" parent="UI/CanvasLayer/HBoxContainer"]
+[node name="LeavesCount" type="Label" parent="GUICanvasLayer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-text = "0"
+size_flags_horizontal = 8
+text = "0
+"
+horizontal_alignment = 2
 
-[node name="Hearts" parent="UI/CanvasLayer" instance=ExtResource("3_pi3lh")]
-position = Vector2(62.9987, 80.0002)
-scale = Vector2(2.78058, 2.78058)
+[node name="UltProgressTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="UltProgressTimer" to="." method="_on_ult_progress_timer_timeout"]
