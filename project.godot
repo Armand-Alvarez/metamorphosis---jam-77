@@ -63,6 +63,7 @@ spawn_mob={
 2d_physics/layer_1="Caterpillar"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Attacks"
+2d_physics/layer_4="Leaves"
 
 [rendering]
 
