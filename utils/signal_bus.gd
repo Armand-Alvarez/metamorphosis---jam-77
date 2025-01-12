@@ -4,6 +4,7 @@ extends Node
 
 # Character Signals
 signal health_changed(health: int)
+signal caterpillar_died()
 
 
 # Mob Signals
