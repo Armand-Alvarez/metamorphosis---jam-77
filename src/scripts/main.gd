@@ -34,15 +34,29 @@ func _set_up_signal_bus_connections() -> void:
 	SignalBus.start_button_pressed.connect(_on_start_button_pressed)
 	SignalBus.quit_button_pressed.connect(_on_quit_button_pressed)
 	SignalBus.upgrade_bought.connect(_on_upgrade_bought)
+	SignalBus.caterpillar_died.connect(_on_caterpillar_died)
+	SignalBus.leaf_picked_up.connect(_on_leaf_picked_up)
 
 
 func _on_start_button_pressed() -> void:
-	pass
+	_switch_states("Game")
+
+
 func _on_quit_button_pressed() -> void:
-	pass
+	get_tree().quit()
+
+
 func _on_upgrade_bought(upgrade: String) -> void:
 	var current_level = upgrade_levels[upgrade]
 	var current_cost = upgrade_costs[current_level]
 	if leaves_owned > current_cost:
 		upgrade_levels[upgrade] += 1
 		leaves_owned -= current_cost
+
+
+func _on_caterpillar_died() -> void:
+	_switch_states("Menu")
+
+
+func _on_leaf_picked_up() -> void:
+	leaves_owned += 1
