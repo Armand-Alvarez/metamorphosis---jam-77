@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfkyjfemmdo4w"]
+
+[ext_resource type="Script" path="res://src/scripts/main.gd" id="1_66xx6"]
+[ext_resource type="PackedScene" uid="uid://b1i4r5ap1ldxm" path="res://src/scenes/menu.tscn" id="2_8xk4u"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_66xx6")
+
+[node name="Menu" parent="." instance=ExtResource("2_8xk4u")]
+offset_left = 902.831
+offset_top = 564.478
+offset_right = 902.831
+offset_bottom = 564.479
