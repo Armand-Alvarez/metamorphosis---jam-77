@@ -18,6 +18,7 @@ var can_take_damage: bool = true
 
 
 func _ready() -> void:
+	_set_up_signal_bus_connections()
 	$NormalCollisionPolygon2D.disabled = false
 	$AttackCollisionShape2D.disabled = true
 	_attack_timer.wait_time = attack_speed
@@ -28,6 +29,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	handle_input(delta)
 	handle_animations()
+
+
+func _set_up_signal_bus_connections() -> void:
+	SignalBus.leaf_picked_up.connect(_on_leaf_picked_up)
+
+
+func _on_leaf_picked_up() -> void:
+	pass
 
 
 func handle_input(delta: float) -> void:
