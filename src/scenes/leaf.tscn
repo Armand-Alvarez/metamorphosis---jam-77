@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://8c0kc1t7kqd6"]
+[gd_scene load_steps=6 format=3 uid="uid://8c0kc1t7kqd6"]
 
 [ext_resource type="Texture2D" uid="uid://ds7nua002vjaa" path="res://assets/leaf.png" id="1_dw8al"]
 [ext_resource type="Script" path="res://src/scripts/leaf.gd" id="1_v6r68"]
@@ -6,10 +6,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_akbtq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0lxp"]
-radius = 57.0351
+radius = 256.096
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7icxv"]
+radius = 21.0
 
 [node name="Leaf" type="RigidBody2D"]
 collision_layer = 8
+collision_mask = 9
+gravity_scale = 0.0
 script = ExtResource("1_v6r68")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,3 +28,11 @@ collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
 shape = SubResource("CircleShape2D_x0lxp")
+
+[node name="CollectionArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+shape = SubResource("CircleShape2D_7icxv")
+
+[connection signal="body_entered" from="CollectionArea" to="." method="_on_collection_area_body_entered"]
