@@ -1,12 +1,12 @@
 # Metamorphosis - Project by Armand Alvarez
 
-![alt text](LSl1Z0.png)
+![alt text](assets/LSl1Z0.png)
 
 Defined - change of physical form, structure, or substance. 2. : a marked and more or less abrupt developmental change in the form or structure of an animal (as a butterfly or a frog) occurring subsequent to birth or hatching.
 
 ---
 
-![alt text](Uk66mA.png)
+![alt text](assets/Uk66mA.png)
 
 ---
 
@@ -27,8 +27,8 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Manual attack
     - [x] swipe tail in direction with short-range arc-shaped projectile
 - [ ] Transformation
-  - [ ] Power-up meter !!!!!!!!
-  - [ ] Power pickups (leaves) !!!!!!!!
+  - [x] Power-up meter
+  - [x] Power pickups (leaves)
   - [ ] Transformation into a butterfly
 - [ ] Upgrades !!!!!!!!!
   - [ ] Increase attack rate
