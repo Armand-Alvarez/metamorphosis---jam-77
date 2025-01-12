@@ -13,3 +13,9 @@ signal drop_leaves(amount: int, location: Vector2)
 
 # Game Signals
 signal leaf_picked_up()
+
+
+# Menu Signals
+signal start_button_pressed()
+signal quit_button_pressed()
+signal upgrade_bought()
