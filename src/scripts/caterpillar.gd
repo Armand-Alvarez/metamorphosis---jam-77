@@ -114,6 +114,8 @@ func attack_animations(direction_vector) -> void:
 func _change_health(amount: int) -> void:
 	health += amount
 	SignalBus.health_changed.emit(health)
+	if health <= 0:
+		SignalBus.caterpillar_died.emit()
 
 
 func _on_marker_update_timer_timeout() -> void:
