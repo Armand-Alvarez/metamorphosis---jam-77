@@ -1,5 +1,5 @@
 class_name Game
-extends Node2D
+extends Node
 
 
 const mobs = {
@@ -10,23 +10,17 @@ const mobs = {
 
 
 func _ready() -> void:
-	set_up_signal_bus_connections()
+	_set_up_signal_bus_connections()
 	leaves = 0
 
 
 func _process(_delta: float) -> void:
-	handle_input()
+	_handle_input()
 
-func set_up_signal_bus_connections() -> void:
+
+func _set_up_signal_bus_connections() -> void:
 	SignalBus.drop_leaves.connect(_on_leaves_dropped)
 	SignalBus.leaf_picked_up.connect(_on_leaf_picked_up)
-
-func handle_input() -> void:
-	if Input.is_action_just_pressed("spawn_mob"):
-		var random_marker = $CharacterBody2D/AIAttackPoints.get_children(true).pick_random()
-		var mob = mobs.get("black_ant").instantiate()
-		mob.marker = random_marker
-		add_child(mob)
 
 
 func _on_leaf_picked_up() -> void:
@@ -44,3 +38,11 @@ func _on_leaves_dropped(amount: int, location: Vector2) -> void:
 
 func _on_ult_progress_timer_timeout() -> void:
 	$GUICanvasLayer/TextureProgressBar.value += 1
+
+
+func _handle_input() -> void:
+	if Input.is_action_just_pressed("spawn_mob"):
+		var random_marker = $CharacterBody2D/AIAttackPoints.get_children(true).pick_random()
+		var mob = mobs.get("black_ant").instantiate()
+		mob.marker = random_marker
+		add_child(mob)
