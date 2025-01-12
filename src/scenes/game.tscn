@@ -14,6 +14,36 @@ position = Vector2(960, 540)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="Hearts" parent="CharacterBody2D/Camera2D" instance=ExtResource("3_pi3lh")]
-position = Vector2(-156.136, -80.0696)
-scale = Vector2(0.484, 0.484)
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -154.0
+offset_top = 29.0
+offset_right = -25.0
+offset_bottom = 52.0
+grow_horizontal = 0
+
+[node name="LeavesText" type="Label" parent="UI/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Leaves:   "
+
+[node name="LeavesCount" type="Label" parent="UI/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Hearts" parent="UI/CanvasLayer" instance=ExtResource("3_pi3lh")]
+position = Vector2(62.9987, 80.0002)
+scale = Vector2(2.78058, 2.78058)
