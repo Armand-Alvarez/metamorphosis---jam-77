@@ -3,10 +3,10 @@ extends Node2D
 
 
 func _ready() -> void:
-	set_up_signal_bus()
+	_set_up_signal_bus_connections()
 
 
-func set_up_signal_bus() -> void:
+func _set_up_signal_bus_connections() -> void:
 	SignalBus.health_changed.connect(_on_health_changed)
 
 func _on_health_changed(health: int) -> void:
