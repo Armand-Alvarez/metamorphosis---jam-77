@@ -29,6 +29,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	handle_input(delta)
 	handle_animations()
+	var bodies_in_hitbox = $Hitbox.get_overlapping_bodies()
+	if not bodies_in_hitbox.is_empty():
+		var damage_taken = 0
+		for body in bodies_in_hitbox:
+			damage_taken += body.damage
+		take_damage(damage_taken)
 
 
 func _set_up_signal_bus_connections() -> void:
@@ -72,9 +78,11 @@ func handle_animations() -> void:
 	if Input.is_action_just_pressed("move_right"):
 		_animation_sprite.flip_h = true
 		$NormalCollisionPolygon2D.scale.x = -1
+		$Hitbox.scale.x = -1
 	if Input.is_action_just_pressed("move_left"):
 		_animation_sprite.flip_h = false
 		$NormalCollisionPolygon2D.scale.x = 1
+		$Hitbox.scale.x = 1
 
 
 
