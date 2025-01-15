@@ -12,9 +12,6 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_h2th1")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ftrwu")]
-position = Vector2(960, 540)
-
 [node name="GUICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hearts" parent="GUICanvasLayer" instance=ExtResource("3_pi3lh")]
@@ -56,6 +53,7 @@ grow_horizontal = 2
 scale = Vector2(2, 2)
 
 [node name="Butterfly" type="TextureProgressBar" parent="GUICanvasLayer/UltProgress"]
+layout_mode = 0
 offset_left = -16.5
 offset_top = 16.0
 offset_right = 15.5
@@ -80,5 +78,8 @@ texture_progress = ExtResource("6_0y17f")
 [node name="UltProgressTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ftrwu")]
+position = Vector2(960, 540)
 
 [connection signal="timeout" from="UltProgressTimer" to="." method="_on_ult_progress_timer_timeout"]
