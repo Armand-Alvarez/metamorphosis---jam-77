@@ -49,7 +49,7 @@ func _on_quit_button_pressed() -> void:
 func _on_upgrade_bought(upgrade: String) -> void:
 	var current_level = upgrade_levels[upgrade]
 	var current_cost = upgrade_costs[current_level]
-	if leaves_owned > current_cost:
+	if leaves_owned >= current_cost:
 		upgrade_levels[upgrade] += 1
 		leaves_owned -= current_cost
 
