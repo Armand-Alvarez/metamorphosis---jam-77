@@ -56,5 +56,8 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [ ] Map
 
 
+# Debug 
 - [x] Fix caterpillar hitbox registration !!!!!!!!
 - [x] Fix upgrades menu not buying at 10 leaves !!!!!!!!
+- [ ] Potentially decrease size of coin gravity area2D
+  - Coins are still following the player character after enemy dies. We only want coins to gravitate towards the player if they are very close to them
