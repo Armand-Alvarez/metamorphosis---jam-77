@@ -6,7 +6,8 @@ const states = {
 }
 
 
-const upgrade_costs = [10, 50, 100, 400, 1000]
+const upgrade_costs = [10, 50, 100, 400, 1000, "Max Level!",]
+const max_upgrade_level = 5
 var upgrade_levels = {
 	"health": 0,
 	"attack_speed": 0,
@@ -17,13 +18,11 @@ var upgrade_levels = {
 
 
 func _ready() -> void:
-	leaves_owned = 0
 	_set_up_signal_bus_connections()
 	_switch_states("Menu")
 
 
 func _switch_states(state_to_load: String) -> void:
-	print("switching state to" + state_to_load)
 	for n in get_children():
 		n.queue_free()
 	var scene_to_load = states[state_to_load].instantiate()
@@ -49,7 +48,7 @@ func _on_quit_button_pressed() -> void:
 func _on_upgrade_bought(upgrade: String) -> void:
 	var current_level = upgrade_levels[upgrade]
 	var current_cost = upgrade_costs[current_level]
-	if leaves_owned >= current_cost:
+	if leaves_owned >= current_cost and current_level < max_upgrade_level:
 		upgrade_levels[upgrade] += 1
 		leaves_owned -= current_cost
 
