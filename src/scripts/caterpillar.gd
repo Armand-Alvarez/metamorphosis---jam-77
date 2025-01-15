@@ -13,12 +13,21 @@ extends CharacterBody2D
 @onready var _attack_animation_sprite = $AnimatedAttack
 @onready var _attack_timer = $AttackTimer
 
+const upgrade_values = {
+	"health": [0, 2, 4, 6, 8],
+	"damage": [2, 3, 4, 5, 6],
+	"attack_speed": [2.0, 1.85, 1.7, 1.65, 1.5],
+}
+
 var can_attack: bool = true
 var can_take_damage: bool = true
 
 
+
+
 func _ready() -> void:
 	_set_up_signal_bus_connections()
+	_set_up_attributes()
 	$NormalCollisionPolygon2D.disabled = false
 	$AttackCollisionShape2D.disabled = true
 	_attack_timer.wait_time = attack_speed
@@ -35,6 +44,13 @@ func _process(delta: float) -> void:
 		for body in bodies_in_hitbox:
 			damage_taken += body.damage
 		take_damage(damage_taken)
+
+
+func _set_up_attributes() -> void:
+	var attribute_levels = get_parent().get_parent().upgrade_levels
+	_change_health(upgrade_values["health"][attribute_levels["health"]])
+	damage = upgrade_values["damage"][attribute_levels["attack_damage"]]
+	attack_speed = upgrade_values["attack_speed"][attribute_levels["attack_speed"]]
 
 
 func _set_up_signal_bus_connections() -> void:
