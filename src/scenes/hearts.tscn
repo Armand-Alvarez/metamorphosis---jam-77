@@ -69,3 +69,23 @@ texture = SubResource("AtlasTexture_sbqqi")
 visible = false
 position = Vector2(80, 0)
 texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(96, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(96, 0)
+texture = SubResource("AtlasTexture_3ouqq")
+
+[node name="Heart8" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(112, 0)
+texture = SubResource("AtlasTexture_sbqqi")
+
+[node name="HalfHeart8" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(112, 0)
+texture = SubResource("AtlasTexture_3ouqq")

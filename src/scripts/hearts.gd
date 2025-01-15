@@ -24,6 +24,10 @@ func _on_health_changed(health: int) -> void:
 		$Heart5.visible = true
 	if health >= 12:
 		$Heart6.visible = true
+	if health >= 14:
+		$Heart7.visible = true
+	if health >= 16:
+		$Heart8.visible = true
 
 	match health:
 		1:
@@ -38,3 +42,7 @@ func _on_health_changed(health: int) -> void:
 			$HalfHeart5.visible = true
 		11:
 			$HalfHeart6.visible = true
+		13:
+			$HalfHeart7.visible = true
+		15:
+			$HalfHeart8.visible = true
