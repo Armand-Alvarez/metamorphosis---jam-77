@@ -56,5 +56,5 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [ ] Map
 
 
-- [ ] Fix caterpillar hitbox registration !!!!!!!!
-- [ ] Fix upgrades menu not buying at 10 leaves !!!!!!!!
+- [x] Fix caterpillar hitbox registration !!!!!!!!
+- [x] Fix upgrades menu not buying at 10 leaves !!!!!!!!
