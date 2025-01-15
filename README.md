@@ -43,14 +43,18 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [ ] Quick movement 
 - [ ] Enemies
   - [x] Ants
-  - [ ] Hornets
-  - [ ] Birds 
+  - [ ] Hornets !!!!!!
+  - [ ] Birds  !!!!!
 - [ ] Bosses
   - [ ] Spiders
   - [ ] Eagle
-- [ ] Main Menu !!!!!!
-  - [ ] Start game
-  - [ ] Upgrades
-  - [ ] Quit game
-- [ ] Background art !!!!!!!! !
+- [x] Main Menu 
+  - [x] Start game
+  - [x] Upgrades
+  - [x] Quit game
+- [ ] Background art 
   - [ ] Map
+
+
+- [ ] Fix caterpillar hitbox registration !!!!!!!!
+- [ ] Fix upgrades menu not buying at 10 leaves !!!!!!!!
