@@ -14,9 +14,9 @@ extends CharacterBody2D
 @onready var _attack_timer = $AttackTimer
 
 const upgrade_values = {
-	"health": [0, 2, 4, 6, 8],
-	"damage": [2, 3, 4, 5, 6],
-	"attack_speed": [2.0, 1.85, 1.7, 1.65, 1.5],
+	"health": [0, 2, 4, 6, 8, 10],
+	"damage": [2, 3, 4, 5, 6, 7],
+	"attack_speed": [2.0, 1.8, 1.6, 1.4, 1.2, 1.0],
 }
 
 var can_attack: bool = true
