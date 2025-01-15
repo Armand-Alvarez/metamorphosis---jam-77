@@ -30,10 +30,10 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Power-up meter
   - [x] Power pickups (leaves)
   - [ ] Transformation into a butterfly
-- [ ] Upgrades !!!!!!!!!
-  - [ ] Increase attack rate
-  - [ ] Increase health
-  - [ ] Increase attack damage 
+- [x] Upgrades
+  - [x] Increase attack rate
+  - [x] Increase health
+  - [x] Increase attack damage 
 - [ ] Butterfly
   - [ ] Art & animations
   - [ ] Movement
@@ -45,15 +45,19 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Ants
   - [ ] Hornets !!!!!!
   - [ ] Birds  !!!!!
-- [ ] Bosses
-  - [ ] Spiders
-  - [ ] Eagle
-- [x] Main Menu 
+  - [ ] Animations
+- [ ] Main Menu 
   - [x] Start game
   - [x] Upgrades
   - [x] Quit game
+  - [ ] Improve look
 - [ ] Background art 
   - [ ] Map
+
+## Features to add if you have time
+- [ ] Bosses
+  - [ ] Spiders
+  - [ ] Eagle
 
 
 # Debug 
