@@ -5,6 +5,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_66xx6")
+leaves_owned = 15
 
 [node name="Menu" parent="." instance=ExtResource("2_8xk4u")]
 offset_left = 902.831

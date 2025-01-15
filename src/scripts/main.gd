@@ -6,7 +6,8 @@ const states = {
 }
 
 
-const upgrade_costs = [10, 50, 100, 400, 1000, "Max Level!",]
+#const upgrade_costs = [10, 50, 100, 400, 1000, "Max Level!",]
+const upgrade_costs = [1, 2, 3, 4, 5, "Max Level!",]
 const max_upgrade_level = 5
 var upgrade_levels = {
 	"health": 0,
@@ -48,9 +49,10 @@ func _on_quit_button_pressed() -> void:
 func _on_upgrade_bought(upgrade: String) -> void:
 	var current_level = upgrade_levels[upgrade]
 	var current_cost = upgrade_costs[current_level]
-	if leaves_owned >= current_cost and current_level < max_upgrade_level:
-		upgrade_levels[upgrade] += 1
-		leaves_owned -= current_cost
+	if current_level < max_upgrade_level:
+		if leaves_owned >= current_cost:
+			upgrade_levels[upgrade] += 1
+			leaves_owned -= current_cost
 
 
 func _on_caterpillar_died() -> void:
