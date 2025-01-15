@@ -7,7 +7,6 @@ extends RigidBody2D
 
 func _process(delta: float) -> void:
 	var colliding_body_array = $GravityArea.get_overlapping_bodies()
-	print(colliding_body_array)
 	if not colliding_body_array.is_empty():
 		var body = colliding_body_array[0]
 		move_and_collide((body.position - position).normalized() * delta * speed)
