@@ -13,3 +13,6 @@ extends Resource
 @export_category("Art")
 @export var texture: Texture2D
 @export var damage_indicator: Texture2D
+
+@export_category("Etc")
+@export var difficulty: int = 0
