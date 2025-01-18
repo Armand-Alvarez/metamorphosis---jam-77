@@ -76,7 +76,7 @@ texture_under = ExtResource("5_gg52o")
 texture_progress = ExtResource("6_0y17f")
 
 [node name="UltProgressTimer" type="Timer" parent="."]
-wait_time = 0.01
+wait_time = 3.0
 autostart = true
 
 [node name="Caterpillar" parent="." instance=ExtResource("1_ftrwu")]
@@ -86,4 +86,13 @@ position = Vector2(960, 540)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="timeout" from="UltProgressTimer" to="." method="_on_ult_progress_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
