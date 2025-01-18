@@ -14,6 +14,7 @@ signal drop_leaves(amount: int, location: Vector2)
 
 # Game Signals
 signal leaf_picked_up()
+signal butterfly_gone()
 
 
 # Menu Signals
