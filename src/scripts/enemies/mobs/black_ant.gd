@@ -25,7 +25,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var direction_vector = marker.position - position
-	move_and_collide(direction_vector.normalized() * speed * delta)
+	velocity = direction_vector.normalized() * speed * delta
+	move_and_slide()
 	if health <= 0:
 		_death()
 		queue_free()
