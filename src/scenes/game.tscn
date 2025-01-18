@@ -76,7 +76,7 @@ texture_under = ExtResource("5_gg52o")
 texture_progress = ExtResource("6_0y17f")
 
 [node name="UltProgressTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.01
 autostart = true
 
 [node name="Caterpillar" parent="." instance=ExtResource("1_ftrwu")]
