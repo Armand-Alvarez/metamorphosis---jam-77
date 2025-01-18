@@ -12,18 +12,22 @@ const mobs = {
 var can_ult: bool = false
 var ult_max: int = 40
 var ult_prog: int = 0
+var char_to_look_at: Node2D
 
 
 func _ready() -> void:
 	_set_up_signal_bus_connections()
 	leaves = 0
 	ult_max = 40
+	char_to_look_at = $Caterpillar
 
 
 func _process(_delta: float) -> void:
 	_handle_input()
 	if ult_prog >= ult_max and get_node_or_null("./Butterfly") == null:
 		can_ult = true
+	$Camera2D.set_position(char_to_look_at.position)
+	print($Caterpillar.position)
 
 
 func _set_up_signal_bus_connections() -> void:
@@ -70,23 +74,23 @@ func use_ult() -> void:
 		SignalBus.health_changed.emit(b.health)
 
 		b.position = $Caterpillar.position
-		enable_disable_caterpillar()
-		add_child(b)
-		$Butterfly/Camera2D.make_current()
-		$Butterfly/Camera2D.reset_smoothing()
-
 		for enemy in $Enemies.get_children(false):
 			var random_marker = b.find_child("AIAttackPoints").get_children(true).pick_random()
 			enemy.marker = random_marker
+		enable_disable_caterpillar()
+		add_child(b)
+		char_to_look_at = $Butterfly
+
 
 
 
 func _on_butterfly_gone(position: Vector2) -> void:
 	$Caterpillar.position = $Butterfly.position
 	$Butterfly.queue_free()
+	#$Caterpillar/Camera2D.make_current()
+	#$Caterpillar/Camera2D.reset_smoothing()
 	enable_disable_caterpillar()
-	$Caterpillar/Camera2D.make_current()
-	$Caterpillar/Camera2D.reset_smoothing()
+	char_to_look_at = $Caterpillar
 
 	for enemy in $Enemies.get_children(false):
 		var random_marker = $Caterpillar/AIAttackPoints.get_children(true).pick_random()

@@ -84,4 +84,6 @@ position = Vector2(960, 540)
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="timeout" from="UltProgressTimer" to="." method="_on_ult_progress_timer_timeout"]
