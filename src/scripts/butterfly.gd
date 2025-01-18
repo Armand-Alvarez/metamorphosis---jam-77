@@ -96,4 +96,3 @@ func _on_hit_indicator_timer_timeout() -> void:
 
 func _on_existence_timer_timeout() -> void:
 	SignalBus.butterfly_gone.emit(self.position)
-	self.queue_free()

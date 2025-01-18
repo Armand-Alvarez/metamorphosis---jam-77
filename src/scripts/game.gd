@@ -67,28 +67,35 @@ func use_ult() -> void:
 	if can_ult:
 		can_ult = false
 		var b = butterfly.instantiate()
+		SignalBus.health_changed.emit(b.health)
+
 		b.position = $Caterpillar.position
 		enable_disable_caterpillar()
-		for enemy in $Enemies.get_children(false):
-			var random_marker = b.find_child("AIAttackPoints").get_children(true).pick_random()
-			enemy.marker = random_marker
-
 		add_child(b)
 		$Butterfly/Camera2D.make_current()
 		$Butterfly/Camera2D.reset_smoothing()
 
+		for enemy in $Enemies.get_children(false):
+			var random_marker = b.find_child("AIAttackPoints").get_children(true).pick_random()
+			enemy.marker = random_marker
+
+
 
 func _on_butterfly_gone(position: Vector2) -> void:
 	$Caterpillar.position = $Butterfly.position
-	ult_prog = 0
-	for child in $GUICanvasLayer/UltProgress.get_children(true):
-		child.value = 0
+	$Butterfly.queue_free()
 	enable_disable_caterpillar()
 	$Caterpillar/Camera2D.make_current()
 	$Caterpillar/Camera2D.reset_smoothing()
+
 	for enemy in $Enemies.get_children(false):
 		var random_marker = $Caterpillar/AIAttackPoints.get_children(true).pick_random()
 		enemy.marker = random_marker
+
+	SignalBus.health_changed.emit($Caterpillar.health)
+	ult_prog = 0
+	for child in $GUICanvasLayer/UltProgress.get_children(true):
+		child.value = 0
 
 
 func enable_disable_caterpillar() -> void:
