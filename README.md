@@ -50,8 +50,8 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Upgrades
   - [x] Quit game
   - [ ] Improve look
-- [ ] Background art 
-  - [ ] Map
+- [x] Background art 
+  - [x] Map
 
 ## Features to add if you have time
 - [ ] Bosses
