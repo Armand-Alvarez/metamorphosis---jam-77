@@ -63,9 +63,9 @@ func attack() -> void:
 	]
 	for dir in projectile_directions:
 		var p = _projectile.instantiate()
-		p.position = $Camera2D.position
+		p.position = Vector2.ZERO + dir * 50
 		p.direction = dir
-		add_child(p)
+		$Projectiles.add_child(p)
 
 
 func _change_health(amount: int) -> void:
