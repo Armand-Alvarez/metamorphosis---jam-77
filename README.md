@@ -34,13 +34,12 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Increase attack rate
   - [x] Increase health
   - [x] Increase attack damage 
-- [ ] Butterfly
-  - [ ] Art & animations
-  - [ ] Movement
-  - [ ] Super armor
-  - [ ] Auto-attack
-    - [ ] 8 projectiles in octogon around butterfly
-  - [ ] Quick movement 
+- [x] Butterfly
+  - [x] Art & animations
+  - [x] Movement
+  - [x] Auto-attack
+    - [x] 8 projectiles in octogon around butterfly
+  - [x] Quick movement 
 - [ ] Enemies
   - [x] Ants
   - [ ] Hornets !!!!!!
