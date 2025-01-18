@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _switch_states(state_to_load: String) -> void:
 	for n in get_children():
-		n.queue_free()
+		if n.name != "Parallax2D": n.queue_free()
 	var scene_to_load = states[state_to_load].instantiate()
 	add_child(scene_to_load)
 
