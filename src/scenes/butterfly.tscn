@@ -122,13 +122,12 @@ position = Vector2(0, 1)
 polygon = PackedVector2Array(-56, -34, -31, 38, 31, 38, 56, -34)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="ExistenceTimer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
-autostart = true
 
 [connection signal="timeout" from="MarkerUpdateTimer" to="." method="_on_marker_update_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
