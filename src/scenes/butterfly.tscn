@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://lhp65loiyju3"]
+
+[ext_resource type="Script" path="res://src/scripts/butterfly.gd" id="1_8e80u"]
+[ext_resource type="Texture2D" uid="uid://cmgrq7qwq6tb7" path="res://assets/butterfly_sprite-Sheet.png" id="1_nf2vt"]
+[ext_resource type="Texture2D" uid="uid://bfo5wd0swtkh7" path="res://assets/damage_indicator.png" id="2_cbupv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jro7"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77pka"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tab2a"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5prpp"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhmgc"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmhip"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyt4t"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvhup"]
+atlas = ExtResource("1_nf2vt")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m37wb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jro7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77pka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tab2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5prpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhmgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmhip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyt4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvhup")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Butterfly" type="CharacterBody2D"]
+script = ExtResource("1_8e80u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_m37wb")
+autoplay = "default"
+frame_progress = 0.851235
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-19.5, -7.5)
+polygon = PackedVector2Array(-35.5, -24.5, -10.5, 45.5, 4.5, 45.5, 34.5, 45.5, 49.5, 45.5, 74.5, -24.5, 62.5, -24.5, -25.5, -24.5)
+
+[node name="AIAttackPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(-8.1401, -3.8738)
+
+[node name="Marker2D2" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(-7.3107, 6.4369)
+
+[node name="Marker2D3" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(7.82942, 6.69974)
+
+[node name="Marker2D4" type="Marker2D" parent="AIAttackPoints"]
+position = Vector2(9.792, -4.17406)
+
+[node name="MarkerUpdateTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="HitIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.49999, -2.49999)
+scale = Vector2(13.0938, 11.3438)
+texture = ExtResource("2_cbupv")
+
+[node name="HitIndicatorTimer" type="Timer" parent="HitIndicator"]
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-56, -34, -31, 38, 31, 38, 56, -34)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
