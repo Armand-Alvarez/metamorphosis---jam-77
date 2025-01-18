@@ -27,7 +27,6 @@ func _process(_delta: float) -> void:
 	if ult_prog >= ult_max and get_node_or_null("./Butterfly") == null:
 		can_ult = true
 	$Camera2D.set_position(char_to_look_at.position)
-	print($Caterpillar.position)
 
 
 func _set_up_signal_bus_connections() -> void:
