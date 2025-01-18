@@ -3,7 +3,8 @@ extends Node
 
 
 const mobs = {
-	"black_ant": preload("res://src/scenes/enemies/mobs/black_ant.tscn")
+	"black_ant": preload("res://src/scenes/enemies/mobs/black_ant.tscn"),
+	"red_ant": preload("res://src/scenes/enemies/mobs/red_ant.tscn"),
 }
 @onready var leaf = preload("res://src/scenes/leaf.tscn")
 @onready var butterfly = preload("res://src/scenes/butterfly.tscn")
@@ -13,6 +14,8 @@ var can_ult: bool = false
 var ult_max: int = 40
 var ult_prog: int = 0
 var char_to_look_at: Node2D
+var difficulty: int = 0
+var can_spawn = [mobs["black_ant"]]
 
 
 func _ready() -> void:
@@ -59,9 +62,9 @@ func _on_ult_progress_timer_timeout() -> void:
 func _handle_input() -> void:
 	if Input.is_action_just_pressed("spawn_mob"):
 		var random_marker = $Caterpillar/AIAttackPoints.get_children(true).pick_random()
-		var mob = mobs.get("black_ant").instantiate()
-		mob.marker = random_marker
-		$Enemies.add_child(mob)
+		var m = mobs.get("black_ant").instantiate()
+		m.marker = random_marker
+		$Enemies.add_child(m)
 	if Input.is_action_just_pressed("ultimate"):
 		use_ult()
 
@@ -105,3 +108,26 @@ func enable_disable_caterpillar() -> void:
 	$Caterpillar/Hitbox.monitoring = !$Caterpillar/Hitbox.monitoring
 	$Caterpillar.visible = !$Caterpillar.visible
 	$Caterpillar.set_process(!$Caterpillar.is_processing())
+
+
+func _on_spawn_timer_timeout() -> void:
+	var max_can_spawn = 1 + difficulty*2
+	for i in range(randi_range(0, max_can_spawn)):
+		var to_spawn = can_spawn.pick_random().instantiate()
+		var rand_angle = Vector2.RIGHT.rotated(randf_range(0, 2*PI))
+		to_spawn.position = $Camera2D.position + (rand_angle * 1000)
+		var rand_marker
+		if $Butterfly:
+			rand_marker = $Butterfly/AIAttackPoints.get_children().pick_random()
+		else:
+			rand_marker = $Caterpillar/AIAttackPoints.get_children().pick_random()
+		to_spawn.marker = rand_marker
+		$Enemies.add_child(to_spawn)
+
+
+func _on_difficulty_timer_timeout() -> void:
+	difficulty += 1
+	can_spawn = []
+	for type in mobs.values():
+		if type.instantiate().resource.difficulty <= difficulty:
+			can_spawn.append(type)
