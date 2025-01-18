@@ -44,7 +44,7 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Ants
   - [ ] Hornets !!!!!!
   - [ ] Birds  !!!!!
-  - [ ] Animations
+  - [ ] Automated enemy spawning !!!!!
 - [ ] Main Menu 
   - [x] Start game
   - [x] Upgrades
