@@ -26,10 +26,10 @@ Defined - change of physical form, structure, or substance. 2. : a marked and mo
   - [x] Health
   - [x] Manual attack
     - [x] swipe tail in direction with short-range arc-shaped projectile
-- [ ] Transformation
+- [x] Transformation
   - [x] Power-up meter
   - [x] Power pickups (leaves)
-  - [ ] Transformation into a butterfly
+  - [x] Transformation into a butterfly
 - [x] Upgrades
   - [x] Increase attack rate
   - [x] Increase health
