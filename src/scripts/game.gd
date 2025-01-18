@@ -6,21 +6,30 @@ const mobs = {
 	"black_ant": preload("res://src/scenes/enemies/mobs/black_ant.tscn")
 }
 @onready var leaf = preload("res://src/scenes/leaf.tscn")
+@onready var butterfly = preload("res://src/scenes/butterfly.tscn")
 @export var leaves: int = 0
+
+var can_ult: bool = false
+var ult_max: int = 40
+var ult_prog: int = 0
 
 
 func _ready() -> void:
 	_set_up_signal_bus_connections()
 	leaves = 0
+	ult_max = 40
 
 
 func _process(_delta: float) -> void:
 	_handle_input()
+	if ult_prog >= ult_max and get_node_or_null("./Butterfly") == null:
+		can_ult = true
 
 
 func _set_up_signal_bus_connections() -> void:
 	SignalBus.drop_leaves.connect(_on_leaves_dropped)
 	SignalBus.leaf_picked_up.connect(_on_leaf_picked_up)
+	SignalBus.butterfly_gone.connect(_on_butterfly_gone)
 
 
 func _on_leaf_picked_up() -> void:
@@ -28,6 +37,7 @@ func _on_leaf_picked_up() -> void:
 	for child in $GUICanvasLayer/UltProgress.get_children():
 		child.value += 1
 	$GUICanvasLayer/PanelContainer/HBoxContainer/LeavesCount.text = str(leaves)
+	ult_prog += 1
 
 
 func _on_leaves_dropped(amount: int, location: Vector2) -> void:
@@ -40,11 +50,48 @@ func _on_leaves_dropped(amount: int, location: Vector2) -> void:
 func _on_ult_progress_timer_timeout() -> void:
 	for child in $GUICanvasLayer/UltProgress.get_children():
 		child.value += 1
+	ult_prog += 1
 
 
 func _handle_input() -> void:
 	if Input.is_action_just_pressed("spawn_mob"):
-		var random_marker = $CharacterBody2D/AIAttackPoints.get_children(true).pick_random()
+		var random_marker = $Caterpillar/AIAttackPoints.get_children(true).pick_random()
 		var mob = mobs.get("black_ant").instantiate()
 		mob.marker = random_marker
-		add_child(mob)
+		$Enemies.add_child(mob)
+	if Input.is_action_just_pressed("ultimate"):
+		use_ult()
+
+
+func use_ult() -> void:
+	if can_ult:
+		can_ult = false
+		var b = butterfly.instantiate()
+		b.position = $Caterpillar.position
+		enable_disable_caterpillar()
+		for enemy in $Enemies.get_children(false):
+			var random_marker = b.find_child("AIAttackPoints").get_children(true).pick_random()
+			enemy.marker = random_marker
+
+		add_child(b)
+		$Butterfly/Camera2D.make_current()
+		$Butterfly/Camera2D.reset_smoothing()
+
+
+func _on_butterfly_gone(position: Vector2) -> void:
+	$Caterpillar.position = $Butterfly.position
+	ult_prog = 0
+	for child in $GUICanvasLayer/UltProgress.get_children(true):
+		child.value = 0
+	enable_disable_caterpillar()
+	$Caterpillar/Camera2D.make_current()
+	$Caterpillar/Camera2D.reset_smoothing()
+	for enemy in $Enemies.get_children(false):
+		var random_marker = $Caterpillar/AIAttackPoints.get_children(true).pick_random()
+		enemy.marker = random_marker
+
+
+func enable_disable_caterpillar() -> void:
+	$Caterpillar/Hitbox.monitoring = !$Caterpillar/Hitbox.monitoring
+	$Caterpillar.visible = !$Caterpillar.visible
+	$Caterpillar.set_process(!$Caterpillar.is_processing())
