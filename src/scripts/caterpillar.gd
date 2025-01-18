@@ -21,18 +21,17 @@ const upgrade_values = {
 
 var can_attack: bool = true
 var can_take_damage: bool = true
+var can_ult: bool = false
 
 
 
 
 func _ready() -> void:
-	_set_up_signal_bus_connections()
 	_set_up_attributes()
 	$NormalCollisionPolygon2D.disabled = false
 	$AttackCollisionShape2D.disabled = true
 	_attack_timer.wait_time = attack_speed
 	$HitIndicator.visible = false
-
 
 
 func _process(delta: float) -> void:
@@ -51,14 +50,6 @@ func _set_up_attributes() -> void:
 	_change_health(upgrade_values["health"][attribute_levels["health"]])
 	damage = upgrade_values["damage"][attribute_levels["attack_damage"]]
 	attack_speed = upgrade_values["attack_speed"][attribute_levels["attack_speed"]]
-
-
-func _set_up_signal_bus_connections() -> void:
-	SignalBus.leaf_picked_up.connect(_on_leaf_picked_up)
-
-
-func _on_leaf_picked_up() -> void:
-	pass
 
 
 func _handle_input(delta: float) -> void:

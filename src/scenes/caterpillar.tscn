@@ -154,7 +154,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(5.745, 5.745)
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_t0v3e")
 speed = 275
 
