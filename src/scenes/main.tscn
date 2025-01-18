@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfkyjfemmdo4w"]
+[gd_scene load_steps=4 format=3 uid="uid://cfkyjfemmdo4w"]
 
 [ext_resource type="Script" path="res://src/scripts/main.gd" id="1_66xx6"]
 [ext_resource type="PackedScene" uid="uid://b1i4r5ap1ldxm" path="res://src/scenes/menu.tscn" id="2_8xk4u"]
 [ext_resource type="Texture2D" uid="uid://bjx1d4y3ocqel" path="res://assets/greenBackground/background.png" id="3_6qds2"]
-[ext_resource type="Script" path="res://src/scripts/texture_rect.gd" id="4_l1nou"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_66xx6")
@@ -15,10 +14,11 @@ offset_top = 564.478
 offset_right = 902.831
 offset_bottom = 564.479
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -45.0
-offset_top = -40.0
-offset_right = 1957.0
-offset_bottom = 1104.0
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1000, 1000)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(990, 555)
+scale = Vector2(2, 2)
 texture = ExtResource("3_6qds2")
-script = ExtResource("4_l1nou")
