@@ -69,6 +69,7 @@ animations = [{
 }]
 
 [node name="Butterfly" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_8e80u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -102,8 +103,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
+autostart = true
 
 [node name="HitIndicator" type="Sprite2D" parent="."]
 visible = false
@@ -124,3 +124,13 @@ polygon = PackedVector2Array(-56, -34, -31, 38, 31, 38, 56, -34)
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="ExistenceTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MarkerUpdateTimer" to="." method="_on_marker_update_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="HitIndicator/HitIndicatorTimer" to="." method="_on_hit_indicator_timer_timeout"]
+[connection signal="timeout" from="ExistenceTimer" to="." method="_on_existence_timer_timeout"]
