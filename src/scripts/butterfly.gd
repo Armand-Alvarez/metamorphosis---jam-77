@@ -21,10 +21,10 @@ func _ready() -> void:
 	$AttackTimer.wait_time = attack_speed
 	$HitIndicator.visible = false
 	$ExistenceTimer.start(existence_time)
-	$AIAttackPoints/Marker2D.position = position + Vector2(-11.1, -4.8)
-	$AIAttackPoints/Marker2D2.position = position + Vector2(-7.3, 2.4)
-	$AIAttackPoints/Marker2D3.position = position + Vector2(3.8, 4.7)
-	$AIAttackPoints/Marker2D4.position = position + Vector2(10.7, -0.1)
+	$AIAttackPoints/Marker2D.position = Vector2.ZERO + Vector2(-11.1, -4.8)
+	$AIAttackPoints/Marker2D2.position = Vector2.ZERO + Vector2(-7.3, 2.4)
+	$AIAttackPoints/Marker2D3.position = Vector2.ZERO + Vector2(3.8, 4.7)
+	$AIAttackPoints/Marker2D4.position = Vector2.ZERO + Vector2(10.7, -0.1)
 
 
 
