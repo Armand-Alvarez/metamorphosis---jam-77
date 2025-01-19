@@ -6,8 +6,7 @@ const states = {
 }
 
 
-#const upgrade_costs = [10, 50, 100, 400, 1000, "Max Level!",]
-const upgrade_costs = [1, 2, 3, 4, 5, "Max Level!",]
+const upgrade_costs = [10, 50, 100, 400, 1000, "Max Level!",]
 const max_upgrade_level = 5
 var upgrade_levels = {
 	"health": 0,
